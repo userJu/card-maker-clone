@@ -1,10 +1,21 @@
-import firebase from "firebase";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { app } from "./firebase";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+} from "firebase/auth";
+
 class AuthService {
   login(providerName) {
-    const authProvider = new [`${providerName}AuthProvider`]();
     const auth = getAuth();
-    signInWithPopup(auth, authProvider);
+    if (providerName === "Google") {
+      const authProvider = new GoogleAuthProvider();
+      signInWithPopup(auth, authProvider);
+    } else if (providerName === "Github") {
+      const authProvider = new GithubAuthProvider();
+      signInWithPopup(auth, authProvider);
+    }
   }
 }
 
