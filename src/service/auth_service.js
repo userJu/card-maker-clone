@@ -5,6 +5,7 @@ import {
   GoogleAuthProvider,
   GithubAuthProvider,
   onAuthStateChanged,
+  getRedirectResult,
 } from "firebase/auth";
 
 class AuthService {
@@ -22,8 +23,10 @@ class AuthService {
     switch (providerName) {
       case "Google":
         return this.googleProvider;
+
       case "Github":
         return this.githubProvider;
+
       default:
         throw new Error("not supported provider");
     }

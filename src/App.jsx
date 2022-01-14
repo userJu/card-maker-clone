@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Maker from "./components/maker/maker";
 
 // 서비스전에 컴포넌트를 먼저 전달한다
-function App({ FileInput, authService }) {
+function App({ FileInput, authService, cardRepository }) {
   return (
     <div className={styles.app}>
       <BrowserRouter>
@@ -12,7 +12,13 @@ function App({ FileInput, authService }) {
           <Route path="/" element={<Login authService={authService} />} />
           <Route
             path="/maker"
-            element={<Maker FileInput={FileInput} authService={authService} />}
+            element={
+              <Maker
+                FileInput={FileInput}
+                authService={authService}
+                cardRepository={cardRepository}
+              />
+            }
           />
         </Routes>
       </BrowserRouter>

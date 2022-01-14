@@ -5,8 +5,10 @@ import App from "./App";
 import AuthService from "./service/auth_service";
 import ImageUploader from "./service/image_uploader";
 import ImageFileInput from "./components/image_file_input/image_file_input";
+import CardRepository from "./service/card_repository";
 
 const authService = new AuthService();
+const cardRepository = new CardRepository();
 const imageUploader = new ImageUploader();
 const FileInput = (props) => (
   <ImageFileInput {...props} imageUploader={imageUploader} />
@@ -18,7 +20,11 @@ const FileInput = (props) => (
 
 ReactDOM.render(
   <React.StrictMode>
-    <App authService={authService} FileInput={FileInput} />
+    <App
+      authService={authService}
+      FileInput={FileInput}
+      cardRepository={cardRepository}
+    />
     {/* component props의 경우에는 대문자로 시작되는 경우가 많다 */}
   </React.StrictMode>,
   document.getElementById("root")
