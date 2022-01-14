@@ -28,7 +28,7 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
     };
     // useEffect에서 return하게 되면 react가 알아서 컴포넌트가 unmount하게 되었을 때 이걸 호출해줌.
     // 그래서 이때 리소스나 메모리를 정리하거나 할 수 있다
-  }, [userId]);
+  }, [userId, cardRepository]);
 
   useEffect(() => {
     authService.onAuthChange((user) => {
@@ -38,7 +38,7 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
         navigate("/");
       }
     });
-  });
+  }, [authService, userId, navigate]);
 
   const createOrUpdateCard = (card) => {
     setCards((cards) => {

@@ -23,3 +23,5 @@ class CardRepository {
 }
 
 export default CardRepository;
+
+// memo를 쓸 때 주의할 점 = react 컴포넌트 성능 보기로 해봤을 때 업데이트가 된다고 해서 다 성능에 무리가 가는 것은 아니다
